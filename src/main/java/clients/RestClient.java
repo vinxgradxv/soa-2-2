@@ -2,9 +2,12 @@ package clients;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
+import javax.net.ssl.SSLContext;
+import java.io.File;
+
 public class RestClient {
 
-    private String server = "http://localhost:8080";
+    private String server = "https://localhost:8080";
     private RestTemplate rest;
     private HttpHeaders headers;
     private HttpStatusCode status;

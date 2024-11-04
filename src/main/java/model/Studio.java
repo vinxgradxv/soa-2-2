@@ -10,6 +10,7 @@ import lombok.Setter;
 @Setter
 @JacksonXmlRootElement(localName = "studio")
 public class Studio {
+    private Integer id;
     @NonNull
     private String name; // cannot be null
 }

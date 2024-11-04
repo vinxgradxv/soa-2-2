@@ -10,6 +10,7 @@ import lombok.Setter;
 @Setter
 @JacksonXmlRootElement(localName = "coordinates")
 public class Coordinates {
+    private Integer id;
     @NonNull
     private Double x; // cannot be null
     @NonNull

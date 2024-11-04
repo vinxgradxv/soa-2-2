@@ -8,16 +8,14 @@ import model.MusicGenre;
 import model.Nomination;
 import model.NominationResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import utils.StringToObjectUsingJackson;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 public class BandsController {
 
     @Autowired
@@ -27,7 +25,7 @@ public class BandsController {
     @SneakyThrows
     public List<MusicBand> getBandsByGenre(@PathVariable MusicGenre genre) {
         var client = new RestClient();
-        var responseFromMainService = client.get("/api/music-bands");
+        var responseFromMainService = client.get("/api/music-bands/all");
         var origBands = StringToObjectUsingJackson.convertStringToListOfObject(responseFromMainService);
         var res = new ArrayList<MusicBand>();
         for (var band : origBands) {

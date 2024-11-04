@@ -25,7 +25,7 @@ public class StringToObjectUsingJackson {
         var respList =  response.split("</item>");
         var omg = new ArrayList<String>();
         for (var resp : respList) {
-            resp = "<musicBand>" + resp + "</musicBand>";
+            resp = "<MusicBand>" + resp + "</MusicBand>";
             resp = resp.replace("<List>", "").replace("</List>", "").replace("<item>", "");
 
             omg.add(resp);
