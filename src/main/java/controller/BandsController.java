@@ -9,6 +9,7 @@ import model.Nomination;
 import model.NominationResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpClientErrorException;
 import utils.StringToObjectUsingJackson;
 
 import java.util.ArrayList;
@@ -38,6 +39,9 @@ public class BandsController {
 
     @PostMapping(value = "/band/{band-id}/nominate/{genre}", produces = "application/xml")
     public NominationResponse nominateBand(@PathVariable("band-id") Long bandId, @PathVariable("genre") MusicGenre genre) {
+        var client = new RestClient();
+
+        var responseFromMainService = client.get("/api/music-bands/" + bandId);
         nominationDao.saveNomination(Nomination.builder()
                         .bandId(bandId)
                         .genre(genre).build());
